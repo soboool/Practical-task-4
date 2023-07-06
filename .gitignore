@@ -1,52 +1,30 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int countEqualDivisors(int n) {
+    int count = 0;
+    int i;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    for (i = 1; i <= n; i++) {
+        if (n % i == n / i) {
+            count++;
+        }
+    }
 
-# Precompiled Headers
-*.gch
-*.pch
+    return count;
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+int main() {
+    int n;
+    printf("Введіть натуральне число n: ");
+    scanf("%d", &n);
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+    if (n <= 1 || n >= 150) {
+        printf("Невірний ввід. Будь ласка, введіть число n в межах (1, 150).\n");
+        return 0;
+    }
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+    int result = countEqualDivisors(n);
+    printf("Кількість рівних дільників числа %d: %d\n", n, result);
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+    return 0;
+}
